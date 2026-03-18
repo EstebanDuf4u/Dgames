@@ -1,0 +1,39 @@
+services:
+
+  dgames-portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dgames-portal
+    restart: unless-stopped
+    ports:
+      - "8085:8085"
+    networks:
+      - dgames
+
+  dgames-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: dgames-api
+    restart: unless-stopped
+    environment:
+      - ADMINS=duffeste
+      - AUTH_DB_HOST=auth-db
+      - AUTH_DB_USER=auth
+      - AUTH_DB_PASS=authpass
+      - AUTH_DB_NAME=dgames_auth
+    volumes:
+      - dgames-api-data:/data
+    networks:
+      - dgames
+      - auth_default
+
+volumes:
+  dgames-api-data:
+
+networks:
+  dgames:
+    external: true
+  auth_default:
+    external: true

@@ -1,0 +1,101 @@
+/* ── Variables ─────────────────────────────────── */
+:root {
+  --py-blue:    #3776AB;
+  --py-blue-dk: #2a5f8f;
+  --py-yellow:  #FFD43B;
+  --bg:         #0d1117;
+  --surface:    #161b22;
+  --surface2:   #21262d;
+  --border:     #30363d;
+  --text:       #e6edf3;
+  --muted:      #8b949e;
+  --error:      #f85149;
+  --green:      #3fb950;
+  --radius:     10px;
+  --font:       'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen { width: 100%; flex: 1; display: flex; flex-direction: column; }
+.hidden { display: none !important; }
+
+/* ── Auth ────────────────────────────────────────── */
+#auth-screen { align-items: center; justify-content: center; padding: 1.5rem; }
+.auth-card   { width: 100%; max-width: 380px; }
+
+/* ── Logo ────────────────────────────────────────── */
+.logo { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 1.8rem; text-align: center; user-select: none; }
+.logo-d     { color: var(--py-yellow); }
+.logo-games { color: var(--py-blue); }
+
+/* ── Card ────────────────────────────────────────── */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+
+/* ── Tabs ────────────────────────────────────────── */
+.tabs { display: flex; gap: .4rem; margin-bottom: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 7px; padding: 4px; }
+.tab  { flex: 1; background: transparent; border: none; border-radius: 5px; color: var(--muted); cursor: pointer; font-family: var(--font); font-size: .85rem; padding: .45rem; transition: background .15s, color .15s; }
+.tab.active { background: var(--surface2); color: var(--text); }
+
+/* ── Form ────────────────────────────────────────── */
+.field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; }
+label  { font-size: .75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+input  { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: var(--font); font-size: .95rem; padding: .55rem .75rem; outline: none; transition: border-color .15s; }
+input:focus { border-color: var(--py-blue); }
+
+/* ── Buttons ─────────────────────────────────────── */
+button[type="submit"], .btn {
+  display: block; width: 100%; margin-top: 1.2rem; padding: .65rem;
+  background: var(--py-blue); color: #fff; border: none; border-radius: 6px;
+  font-family: var(--font); font-size: .95rem; font-weight: 600; cursor: pointer;
+  text-align: center; text-decoration: none; transition: background .15s;
+}
+button[type="submit"]:hover, .btn:hover { background: var(--py-blue-dk); }
+button[type="submit"]:disabled { opacity: .45; cursor: not-allowed; }
+.error { color: var(--error); font-size: .82rem; margin-top: .4rem; }
+
+/* ── Header ──────────────────────────────────────── */
+header { display: flex; align-items: center; justify-content: space-between; padding: .9rem 2rem; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+header .logo { margin-bottom: 0; font-size: 1.5rem; }
+.header-right { display: flex; align-items: center; gap: .75rem; }
+
+#logout-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 6px; padding: .35rem .8rem; font-family: var(--font); font-size: .82rem; cursor: pointer; transition: color .15s, border-color .15s; width: auto; margin-top: 0; }
+#logout-btn:hover { color: var(--error); border-color: var(--error); }
+
+.admin-link { font-size: .8rem; color: var(--py-yellow); text-decoration: none; border: 1px solid var(--py-yellow); border-radius: 5px; padding: .3rem .7rem; opacity: .7; transition: opacity .15s; }
+.admin-link:hover { opacity: 1; }
+
+/* ── Portal main ─────────────────────────────────── */
+main { padding: 2.5rem 2rem; max-width: 900px; margin: 0 auto; width: 100%; }
+.subtitle { font-size: .85rem; color: var(--muted); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: .08em; }
+.loading-msg { color: var(--muted); font-size: .9rem; }
+
+/* ── Game grid ───────────────────────────────────── */
+.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+
+.game-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .75rem; text-decoration: none; color: var(--text); position: relative; transition: border-color .2s, transform .2s; }
+.game-card:hover { border-color: var(--py-blue); transform: translateY(-4px); }
+
+.game-card.maintenance { opacity: .55; cursor: not-allowed; }
+.game-card.maintenance:hover { border-color: var(--border); transform: none; }
+.maintenance-msg { font-size: .85rem; color: var(--muted); }
+
+.game-icon { font-size: 3rem; line-height: 1; }
+.game-card h2 { font-size: 1.2rem; color: var(--py-yellow); }
+.game-card p  { font-size: .85rem; color: var(--muted); flex: 1; }
+.game-card .btn { width: 100%; margin-top: auto; }
+
+/* ── Status dot ──────────────────────────────────── */
+.status-dot { position: absolute; top: .6rem; right: .6rem; width: 8px; height: 8px; border-radius: 50%; }
+.dot-up      { background: var(--green); box-shadow: 0 0 5px var(--green); }
+.dot-down    { background: var(--error); }
+.dot-unknown { background: var(--muted); }

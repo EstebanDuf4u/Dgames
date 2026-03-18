@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dgames — Profil</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+
+  <div id="app" class="screen hidden">
+    <header>
+      <div class="logo"><span class="logo-d">D</span><span class="logo-games">games</span></div>
+      <div class="header-right">
+        <a href="/" class="logout-link">← Portail</a>
+      </div>
+    </header>
+
+    <main class="profile-main">
+      <div class="profile-card card">
+
+        <!-- Avatar -->
+        <div class="avatar-wrap">
+          <div class="avatar-big" id="avatar-big"></div>
+          <div>
+            <p class="profile-username" id="profile-username"></p>
+            <p class="profile-sub">Membre Dgames</p>
+          </div>
+        </div>
+
+        <div class="profile-divider"></div>
+
+        <!-- Changer mdp -->
+        <h3 class="section-title">Changer le mot de passe</h3>
+        <form id="pwd-form">
+          <div class="field">
+            <label>Mot de passe actuel</label>
+            <input id="current-pwd" type="password" required />
+          </div>
+          <div class="field">
+            <label>Nouveau mot de passe</label>
+            <input id="new-pwd" type="password" required />
+          </div>
+          <div class="field">
+            <label>Confirmer</label>
+            <input id="confirm-pwd" type="password" required />
+          </div>
+          <p id="pwd-error"   class="error   hidden"></p>
+          <p id="pwd-success" class="success hidden"></p>
+          <button type="submit" id="pwd-btn">Mettre à jour</button>
+        </form>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

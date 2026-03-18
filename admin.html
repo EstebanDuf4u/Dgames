@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dgames — Admin</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div id="forbidden" class="screen hidden">
+    <div class="centered">
+      <p class="big-icon">🚫</p>
+      <h1>Accès refusé</h1>
+      <a href="/" class="btn inline-btn">Retour au portail</a>
+    </div>
+  </div>
+
+  <div id="admin-screen" class="screen hidden">
+    <header>
+      <div class="logo"><span class="logo-d">D</span><span class="logo-games">games</span> <span class="badge">admin</span></div>
+      <div class="header-right">
+        <span id="welcome"></span>
+        <span id="save-indicator"></span>
+        <a href="/" class="logout-link">← Portail</a>
+      </div>
+    </header>
+
+    <!-- Onglets -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-panel="games">Jeux</button>
+      <button class="admin-tab" data-panel="users">Utilisateurs</button>
+      <button class="admin-tab" data-panel="activity">Activité</button>
+    </div>
+
+    <!-- Panel Jeux -->
+    <div id="panel-games" class="tab-panel">
+      <div class="panel-header">
+        <span class="panel-hint">Glisser-déposer pour réordonner</span>
+      </div>
+      <div id="panel-grid" class="panel-grid">
+        <button id="add-card" class="panel-card add-card" onclick="openAdd()">
+          <span class="add-icon">+</span>
+          <span>Ajouter un jeu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Panel Utilisateurs -->
+    <div id="panel-users" class="tab-panel hidden">
+      <table class="admin-table">
+        <thead><tr><th>Utilisateur</th><th>Inscription</th><th>Vu pour la dernière fois</th><th>Statut</th><th>Action</th></tr></thead>
+        <tbody id="users-body"></tbody>
+      </table>
+    </div>
+
+    <!-- Panel Activité -->
+    <div id="panel-activity" class="tab-panel hidden">
+      <table class="admin-table">
+        <thead><tr><th>Date</th><th>Utilisateur</th><th>Événement</th><th>Jeu</th></tr></thead>
+        <tbody id="activity-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal ajout / édition -->
+  <div id="modal-overlay" class="hidden">
+    <div class="modal-inner">
+      <div class="modal card">
+        <h3 id="modal-title">Ajouter un jeu</h3>
+        <div class="modal-body">
+          <form id="game-form">
+            <input type="hidden" id="f-original-id" />
+            <div class="form-grid">
+              <div class="field">
+                <label>ID <small>(slug unique)</small></label>
+                <input id="f-id" type="text" placeholder="snake" required />
+              </div>
+              <div class="field">
+                <label>Icône</label>
+                <input id="f-icon" type="text" placeholder="🐍" required />
+              </div>
+              <div class="field full">
+                <label>Nom</label>
+                <input id="f-name" type="text" placeholder="Snake" required />
+              </div>
+              <div class="field full">
+                <label>Description</label>
+                <input id="f-desc" type="text" placeholder="Mange, grandis, survive." required />
+              </div>
+              <div class="field full">
+                <label>URL</label>
+                <input id="f-url" type="url" placeholder="https://snake.noryx.fr" required />
+              </div>
+            </div>
+            <p id="form-error" class="error hidden"></p>
+            <div class="modal-actions">
+              <button type="button" id="cancel-btn" class="btn-ghost">Annuler</button>
+              <button type="submit" class="btn-sm">Enregistrer</button>
+            </div>
+          </form>
+
+          <!-- Preview live -->
+          <div class="preview-wrap">
+            <p class="preview-label">Aperçu</p>
+            <div class="card game-card preview-card">
+              <div class="game-icon" id="preview-icon">🎮</div>
+              <h2 id="preview-name" style="color:var(--py-yellow)">Nom du jeu</h2>
+              <p id="preview-desc" style="color:var(--muted);font-size:.85rem">Description…</p>
+              <span class="btn" style="margin-top:auto">Jouer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

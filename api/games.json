@@ -1,0 +1,29 @@
+[
+  {
+    "id": "snake",
+    "name": "Snake",
+    "icon": "🐍",
+    "description": "Mange, grandis, survive.",
+    "url": "https://snake.noryx.fr",
+    "visible": true,
+    "allowed": "all"
+  },
+  {
+    "id": "wordle",
+    "name": "Wordle",
+    "icon": "📝",
+    "description": "Trouve le mot en 6 essais.",
+    "url": "https://wordle.noryx.fr",
+    "visible": true,
+    "allowed": "all"
+  },
+  {
+    "id": "bataille",
+    "name": "Bataille Navale",
+    "icon": "⚓",
+    "description": "Place ta flotte et coule l'adversaire.",
+    "url": "https://bataille.noryx.fr",
+    "visible": true,
+    "allowed": "all"
+  }
+]
